@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Kelompok 7 - Teknologi Modern</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-purple: #a855f7;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background-color: #020617;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #1e293b;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2));
+            color: var(--text-light);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 280px;
+            padding: 3rem;
+            width: calc(100% - 280px);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Card */
+        .hero-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-card h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-member {
+            background-color: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            text-align: center;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        /* Material Content Styling */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p, .card ul {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .card ul {
+            margin-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigasi -->
+    <div class="sidebar">
+        <h2>Kelompok 7</h2>
+        <p>Kelas XII.1</p>
+        <ul class="nav-links">
+            <li><a href="#home" class="active" onclick="showSection('home', this)">Beranda</a></li>
+            <li><a href="#industri" onclick="showSection('industri', this)">Revolusi Industri 4.0</a></li>
+            <li><a href="#iot" onclick="showSection('iot', this)">Internet of Things</a></li>
+            <li><a href="#bigdata" onclick="showSection('bigdata', this)">Big Data</a></li>
+            <li><a href="#ai" onclick="showSection('ai', this)">Artificial Intelligence</a></li>
+            <li><a href="#cloud" onclick="showSection('cloud', this)">Cloud Computing</a></li>
+        </ul>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="content">
+
+        <!-- Beranda -->
+        <div id="home" class="section active">
+            <div class="hero-card">
+                <span class="badge">PRESENTASI KELOMPOK</span>
+                <h1>Teknologi Era Digital & Industri 4.0</h1>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">
+                    Situs web interaktif ini disusun untuk menjelaskan pilar-pilar utama transformasi digital masa kini.
+                </p>
+            </div>
+
+            <h2 style="margin-bottom: 1rem; color: var(--text-light);">Anggota Kelompok 7:</h2>
+            <div class="team-grid">
+                <div class="team-member">Dinda Maishilla</div>
+                <div class="team-member">Jaza Anil Chusna</div>
+                <div class="team-member">Muhammad Narda Nafis</div>
+                <div class="team-member">Putu Raditya</div>
+            </div>
+        </div>
+
+        <!-- Revolusi Industri 4.0 -->
+        <div id="industri" class="section">
+            <div class="hero-card">
+                <span class="badge">TOPIK 01</span>
+                <h1>Revolusi Industri 4.0</h1>
+                <p>Era integrasi antara dunia fisik, digital, dan biologi melalui teknologi canggih.</p>
+            </div>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Pengertian</h3>
+                    <p>Revolusi Industri 4.0 adalah otomatisasi sistem produksi yang memanfaatkan konektivitas internet dan pertukaran data secara real-time untuk efisiensi maksimal.</p>
+                </div>
+                <div class="card">
+                    <h3>Ciri Utama</h3>
+                    <ul>
+                        <li>Otomatisasi tingkat tinggi pada mesin dan proses kerja.</li>
+                        <li>Konektivitas serba digital (Internet).</li>
+                        <li>Pengambilan keputusan berbasis data cerdas.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Internet of Things -->
+        <div id="iot" class="section">
+            <div class="hero-card">
+                <span class="badge">TOPIK 02</span>
+                <h1>Internet of Things (IoT)</h1>
+                <p>Jaringan perangkat fisik yang saling terhubung dan berkomunikasi tanpa intervensi manusia.</p>
+            </div>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Cara Kerja</h3>
+                    <p>Sensor pada perangkat mengumpulkan data, lalu mengirimkannya melalui internet ke server/cloud untuk diolah dan memberikan tindakan otomatis.</p>
+                </div>
+                <div class="card">
+                    <h3>Contoh Penerapan</h3>
+                    <ul>
+                        <li><strong>Smart Home:</strong> Lampu dan AC yang bisa dikontrol via HP.</li>
+                        <li><strong>Smart City:</strong> Pemantauan lalu lintas dan sampah otomatis.</li>
+                        <li><strong>Pertanian Cerdas:</strong> Penyiraman tanaman otomatis berbasis kelembapan tanah.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Big Data -->
+        <div id="bigdata" class="section">
+            <div class="hero-card">
+                <span class="badge">TOPIK 03</span>
+                <h1>Big Data</h1>
+                <p>Kumpulan data bervolume sangat besar dan kompleks yang terus berkembang setiap detik.</p>
+            </div>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Karakteristik (3V)</h3>
+                    <ul>
+                        <li><strong>Volume:</strong> Jumlah data sangat besar.</li>
+                        <li><strong>Velocity:</strong> Kecepatan pemrosesan dan pembuatan data.</li>
+                        <li><strong>Variety:</strong> Keanekaragaman bentuk data (teks, foto, video, angka).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Manfaat</h3>
+                    <p>Memungkinkan perusahaan memprediksi tren pasar, memahami perilaku pengguna sosial media, serta mengoptimalkan sistem layanan digital.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artificial Intelligence -->
+        <div id="ai" class="section">
+            <div class="hero-card">
+                <span class="badge">TOPIK 04</span>
+                <h1>Artificial Intelligence (AI)</h1>
+                <p>Simulasi kecerdasan manusia yang dimodelkan ke dalam mesin agar dapat berpikir dan belajar.</p>
+            </div>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Cabang Utama AI</h3>
+                    <ul>
+                        <li><strong>Machine Learning:</strong> Mesin belajar dari data tanpa diprogram ulang secara eksplisit.</li>
+                        <li><strong>Computer Vision:</strong> Kemampuan mesin mengenali objek pada gambar/video.</li>
+                        <li><strong>NLP:</strong> Kemampuan memproses bahasa manusia (contoh: Chatbot).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Penerapan Sehari-hari</h3>
+                    <p>Rekomendasi video YouTube/Netflix, asisten suara (Google Assistant/Siri), dan sistem navigasi peta digital.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cloud Computing -->
+        <div id="cloud" class="section">
+            <div class="hero-card">
+                <span class="badge">TOPIK 05</span>
+                <h1>Cloud Computing</h1>
+                <p>Layanan komputasi (server, penyimpanan, database, jaringan) yang diakses melalui internet.</p>
+            </div>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Tipe Layanan</h3>
+                    <ul>
+                        <li><strong>SaaS:</strong> Software siap pakai (misal: Google Docs, Canva).</li>
+                        <li><strong>PaaS:</strong> Platform untuk membuat aplikasi.</li>
+                        <li><strong>IaaS:</strong> Infrastruktur server fisik virtual.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Keunggulan</h3>
+                    <p>Hemat biaya karena tidak perlu membeli server fisik, data dapat diakses dari mana saja, dan kapasitas penyimpanan yang sangat fleksibel.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showSection(sectionId, element) {
+            // Sembunyikan semua seksi
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Tampilkan seksi yang dipilih
+            document.getElementById(sectionId).classList.add('active');
+
+            // Perbarui status link navigasi
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
